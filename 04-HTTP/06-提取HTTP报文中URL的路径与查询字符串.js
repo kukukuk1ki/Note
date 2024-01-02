@@ -15,8 +15,8 @@ const server = http.createServer((request, response) => {
   // 输出路径
   // console.log(url.pathname)
   // 输出 keyword 查询字符串
-  console.log(url.searchParams.get('keyword'))
-  console.log(url.searchParams.get('pwd'))
+  console.log(1, url.searchParams.get('keyword'))
+  console.log(2, url.searchParams.get('pwd'))
 
   response.end('url new')
 });
