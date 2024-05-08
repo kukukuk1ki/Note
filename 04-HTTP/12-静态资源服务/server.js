@@ -4,7 +4,52 @@
  * GET  /css/app.css       响应  page/css/app.css 的文件内容
  * GET  /images/logo.png   响应  page/images/logo.png 的文件内容
  */
-//导入 http 模块
+// 导入http模块
 const http = require('http')
+// 导入 fs 模块
 const fs = require('fs')
 const path = require('path')
+
+// 创建服务对象
+const server = http.createServer((request, response) => {
+  // 获取请求 url 的路径
+  let { pathname } = new URL(request.url, 'http://127.0.0.1')
+  // 声明网站根目录变量
+  // let root = __dirname + '/page'
+  let root = __dirname + '/../'
+  // 拼接文件路径
+  let filePath = root + pathname
+  // 异步读取文件
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      response.setHeader('Content-Type', 'text/html; charset=utf-8')
+      response.statusCode = 500
+      response.end('文件读取失败~~~')
+      return
+    }
+    // 响应文件内容
+    response.end(data)
+  })
+
+  // if (pathname === '/') {
+  //   // 读取文件内容
+  //   let html = fs.readFileSync(__dirname + '/page/index.html')
+  //   response.end(html) //设置响应体
+  // } else if (pathname === '/css/app.css') {
+  //   // 读取文件内容
+  //   let css = fs.readFileSync(__dirname + '/page/css/app.css')
+  //   response.end(css) //设置响应体
+  // } else if (pathname === '/images/logo.png') {
+  //   // 读取文件内容
+  //   let img = fs.readFileSync(__dirname + '/page/images/logo.png')
+  //   response.end(img) //设置响应体
+  // } else {
+  //   response.end('<h1>404 Not Found</h1>') //设置响应体
+  // }
+})
+
+// 设置端口 启动服务
+server.listen(9000, () => {
+  console.log('服务已启动，端口 9000......')
+})
+
