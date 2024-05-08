@@ -43,8 +43,12 @@ const server = http.createServer((request, response) => {
     let type = mimes[ext]
     // console.log(ext)
     if (type) {
-      // 匹配到了
-      response.setHeader('Content-Type', type)
+      // 匹配到了                 text/html; charset=utf-8
+      if (ext === 'html') {
+        response.setHeader('Content-Type', type + ';charset=utf-8')
+      } else {
+        response.setHeader('Content-Type', type)
+      }
     } else {
       // 没匹配到
       response.setHeader('Content-Type', 'application/octet-stream')
