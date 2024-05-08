@@ -9,7 +9,17 @@ const http = require('http')
 // 导入 fs 模块
 const fs = require('fs')
 const path = require('path')
-
+let mimes = {
+  html: 'text/html',
+  css: 'text/css',
+  js: 'text/javascript',
+  png: 'image/png',
+  jpg: 'image/jpeg',
+  gif: 'image/gif',
+  mp4: 'video/mp4',
+  mp3: 'audio/mpeg',
+  json: 'application/json'
+}
 // 创建服务对象
 const server = http.createServer((request, response) => {
   // 获取请求 url 的路径
@@ -26,6 +36,18 @@ const server = http.createServer((request, response) => {
       response.statusCode = 500
       response.end('文件读取失败~~~')
       return
+    }
+    // 获取请求文件后缀名
+    let ext = path.extname(filePath).slice(1)
+    // 获取对应的类型
+    let type = mimes[ext]
+    // console.log(ext)
+    if (type) {
+      // 匹配到了
+      response.setHeader('Content-Type', type)
+    } else {
+      // 没匹配到
+      response.setHeader('Content-Type', 'application/octet-stream')
     }
     // 响应文件内容
     response.end(data)
