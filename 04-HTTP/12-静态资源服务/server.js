@@ -15,8 +15,8 @@ const server = http.createServer((request, response) => {
   // 获取请求 url 的路径
   let { pathname } = new URL(request.url, 'http://127.0.0.1')
   // 声明网站根目录变量
-  // let root = __dirname + '/page'
-  let root = __dirname + '/../'
+  let root = __dirname + '/page'
+  // let root = __dirname + '/../'
   // 拼接文件路径
   let filePath = root + pathname
   // 异步读取文件
