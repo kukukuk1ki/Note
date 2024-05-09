@@ -22,6 +22,11 @@ let mimes = {
 }
 // 创建服务对象
 const server = http.createServer((request, response) => {
+  if (request.method === 'POST') {
+    response.statusCode = 405
+    response.end('<h1>405 Method Not Allowed</h1>')
+    return
+  }
   // 获取请求 url 的路径
   let { pathname } = new URL(request.url, 'http://127.0.0.1')
   // 声明网站根目录变量
@@ -32,9 +37,21 @@ const server = http.createServer((request, response) => {
   // 异步读取文件
   fs.readFile(filePath, (err, data) => {
     if (err) {
+      console.log(err)
+      // 设置字符集
       response.setHeader('Content-Type', 'text/html; charset=utf-8')
-      response.statusCode = 500
-      response.end('文件读取失败~~~')
+      // 判断错误代号
+      switch (err.code) {
+        case 'ENOENT':
+          response.statusCode = 404
+          response.end('<h1>404 Not Found</h1>')
+        case 'EPERM':
+          response.statusCode = 403
+          response.end('<h1>403 Forbidden</h1>')
+        default:
+          response.statusCode = 500
+          response.end('<h1>Internal Server Error</h1>')
+      }
       return
     }
     // 获取请求文件后缀名
