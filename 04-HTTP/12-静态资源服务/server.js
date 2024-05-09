@@ -37,7 +37,7 @@ const server = http.createServer((request, response) => {
   // 异步读取文件
   fs.readFile(filePath, (err, data) => {
     if (err) {
-      console.log(err)
+      // console.log(err)
       // 设置字符集
       response.setHeader('Content-Type', 'text/html; charset=utf-8')
       // 判断错误代号
