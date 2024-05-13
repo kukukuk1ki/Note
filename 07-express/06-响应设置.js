@@ -11,7 +11,7 @@ app.get('/response', (req, res) => {
   // res.statusMessage = 'Not Found'
   // res.setHeader('abc', 'xyz') // 响应头
   // res.write('hello express ')
-  // res.end('response')
+  res.end('response') // 响应体
 
   // express 的响应方法
   // res.status(500) // 响应状态码
