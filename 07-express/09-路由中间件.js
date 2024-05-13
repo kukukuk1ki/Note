@@ -15,6 +15,7 @@ app.get('/home', (req, res) => {
 
 // 声明路由中间件函数（命名函数、匿名函数和箭头函数都可以）
 let checkCodeMiddleware = (req, res, next) => {
+  // 判断 URL 中是否 code 参数等于 521
   if (req.query.code === '521') {
     next()
   } else {
@@ -27,7 +28,7 @@ let checkCodeMiddleware = (req, res, next) => {
   });
 
   app.get('/路径',`中间件函数1`,`中间件函数2`,(request,response)=>{
-    
+
   });
  */
 
