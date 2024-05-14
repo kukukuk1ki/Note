@@ -13,4 +13,11 @@ router.get('/accounts/create', function(req, res, next) {
   res.render('create')
 });
 
+// 新增记录
+router.post('/account', function(req, res, next) {
+  // 获取请求体数据
+  console.log(req.body)
+  res.send('添加记录')
+});
+
 module.exports = router;
