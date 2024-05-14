@@ -1,0 +1,27 @@
+{
+  "accounts": [
+    {
+      "id": "AxH6k1H7r",
+      "title": "发工资",
+      "time": "2024-06-17",
+      "type": "1",
+      "account": "6800",
+      "remarks": "终于发工资啦！！！"
+    },
+    {
+      "id": "52tJiD-ww",
+      "title": "发工资",
+      "time": "2024-05-15",
+      "type": "1",
+      "account": "6800",
+      "remarks": "终于发工资啦！！！"
+    },
+    {
+      "title": "发工资",
+      "time": "2024-05-15",
+      "type": "1",
+      "account": "5700",
+      "remarks": "发薪日"
+    }
+  ]
+}
