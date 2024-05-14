@@ -25,7 +25,7 @@ router.get('/accounts/create', function(req, res, next) {
 });
 
 // 新增记录
-router.post('/account', function(req, res, next) {
+router.post('/accounts', function(req, res, next) {
   // 获取请求体数据
   // console.log(req.body)
   // 生成id
@@ -35,6 +35,18 @@ router.post('/account', function(req, res, next) {
   db.get('accounts').unshift({id: id, ...req.body}).write()
   // 成功提醒
   res.render('success', {msg: '添加成功', url: '/accounts'})
+});
+
+// 删除记录
+router.get('/accounts/:id', function(req, res, next) {
+  // 获取 params 的 id 参数
+  let id = req.params.id
+  console.log('id = ', id)
+  // 删除
+  db.get('accounts').remove({ id: id}).write()
+  // 成功提醒
+  // res.send('删除成功')
+  res.render('success', {msg: '删除成功', url: '/accounts'})
 });
 
 module.exports = router;
