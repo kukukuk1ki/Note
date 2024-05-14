@@ -1,67 +1,46 @@
 {
   "accounts": [
     {
-      "id": "FMkLWMYzY",
-      "title": "发工资",
-      "time": "2024-07-13",
-      "type": "1",
-      "account": "6800",
-      "remarks": "终于发工资啦！！！"
+      "id": "3-YLju5f3",
+      "title": "买电脑",
+      "time": "2023-02-08",
+      "type": "-1",
+      "account": "5500",
+      "remarks": "为了上网课"
     },
     {
-      "id": "LSgAVbN6G",
+      "id": "3-YLju5f4",
+      "title": "请女朋友吃饭",
+      "time": "2023-02-08",
+      "type": "-1",
+      "account": "214",
+      "remarks": "情人节聚餐"
+    },
+    
+    {
+      "id": "mRQiD4s3K",
       "title": "发工资",
-      "time": "2024-07-13",
+      "time": "2023-02-19",
       "type": "1",
-      "account": "6800",
-      "remarks": "终于发工资啦！！！"
+      "account": "4396",
+      "remarks": "终于发工资啦!~~"
+    }
+  ],
+  "users":[
+    {
+      "id": 1,
+      "name": "zhangsan",
+      "age": 18
     },
     {
-      "id": "7-6GkSWSN",
-      "title": "发工资",
-      "time": "2024-07-13",
-      "type": "1",
-      "account": "6800",
-      "remarks": "终于发工资啦！！！"
+      "id": 2,
+      "name": "lisi",
+      "age": 20
     },
     {
-      "id": "WNDk1-4oq",
-      "title": "发工资",
-      "time": "2024-07-13",
-      "type": "1",
-      "account": "6800",
-      "remarks": "终于发工资啦！！！"
-    },
-    {
-      "id": "rb73Gr_Lm",
-      "title": "发工资",
-      "time": "2024-07-13",
-      "type": "1",
-      "account": "6800",
-      "remarks": "终于发工资啦！！！"
-    },
-    {
-      "id": "AxH6k1H7r",
-      "title": "发工资",
-      "time": "2024-06-17",
-      "type": "1",
-      "account": "6800",
-      "remarks": "终于发工资啦！！！"
-    },
-    {
-      "id": "52tJiD-ww",
-      "title": "发工资",
-      "time": "2024-05-15",
-      "type": "1",
-      "account": "6800",
-      "remarks": "终于发工资啦！！！"
-    },
-    {
-      "title": "发工资",
-      "time": "2024-05-15",
-      "type": "1",
-      "account": "5700",
-      "remarks": "发薪日"
+      "id": 3,
+      "name": "wangwu",
+      "age": 22
     }
   ]
 }
