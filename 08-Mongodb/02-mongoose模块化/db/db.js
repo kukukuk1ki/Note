@@ -4,12 +4,22 @@
  * @param {*} error 数据库连接失败的回调
  */
 module.exports = function (success, error) {
+  // 判断 error 为其设置默认值
+  if (error !== 'function') {
+    error = () => {
+      console.log('连接失败~~~')
+    }
+  }
+
   // 1.安装mongoose
   // 2.导入 mongosse
   const mongosse = require('mongoose')
 
+  // 导入 config 文件
+  const { DBHOST, DBPORT, DBNAME} = require('../config/config.js')
+
   // 3.连接 mongodb 服务
-  mongosse.connect('mongodb://127.0.0.1:27017/bilibili')
+  mongosse.connect(`mongodb://${DBHOST}:${DBPORT}/${DBNAME}`)
 
   // 4.设置连接回调
   // 连接成功的回调        once 一次   事件回调函数只执行一次
