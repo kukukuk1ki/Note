@@ -1,6 +1,14 @@
 {
   "accounts": [
     {
+      "id": "ArHjMrHZ6",
+      "title": "买自行车",
+      "time": "2024-06-05",
+      "type": "-1",
+      "account": "299",
+      "remarks": "买自行车"
+    },
+    {
       "id": "3-YLju5f4",
       "title": "请女朋友吃饭",
       "time": "2023-02-08",
