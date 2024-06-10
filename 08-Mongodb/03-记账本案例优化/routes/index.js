@@ -15,13 +15,20 @@ const AccountModal = require('../models/AccountModel')
 // 测试
 // console.log(moment('2024-06-05').toDate())
 // console.log(new Date('2024-06-05'))
+// console.log(moment(new Date).format('YYYY-MM-DD'))
 
 // 记账本列表
 router.get('/account', function (req, res, next) {
   // 获取所有账单信息
-  let accounts = db.get('accounts').value()
+  // let accounts = db.get('accounts').value()
   // console.log(accounts)
-  res.render('list', { accounts: accounts })
+
+  AccountModal.find().sort({time:-1}).exec().then(data => {
+    // console.log(data)
+    res.render('list', { accounts: data, moment: moment })
+  }).catch(err => {
+    console.log(err)
+  })
 })
 
 // 添加记录
