@@ -59,15 +59,16 @@ router.post('/account', function (req, res, next) {
 })
 
 // 删除记录
-router.get('/accounts/:id', function (req, res, next) {
+router.get('/account/:id', function (req, res, next) {
   // 获取 params 的 id 参数
   let id = req.params.id
-  console.log('id = ', id)
   // 删除
-  db.get('accounts').remove({ id: id }).write()
-  // 成功提醒
-  // res.send('删除成功')
-  res.render('success', { msg: '删除成功', url: '/accounts' })
+  AccountModal.deleteOne({ _id: id }).then((data, err) => {
+    if (err) {
+      console.log('删除失败', err)
+    }
+    res.render('success', { msg: '删除成功', url: '/account' })
+  })
 })
 
 module.exports = router
