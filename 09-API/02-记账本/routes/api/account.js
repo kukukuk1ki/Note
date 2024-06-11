@@ -53,7 +53,7 @@ router.post('/account', function (req, res, next) {
     .catch(err => {
       res.json({
         // 响应编号
-        code: '1001',
+        code: '1002',
         // 响应信息
         msg: '新增失败~~~',
         // 响应数据
@@ -63,15 +63,32 @@ router.post('/account', function (req, res, next) {
 })
 
 // 删除记录
-router.get('/account/:id', function (req, res, next) {
+router.delete('/account/:id', function (req, res, next) {
   // 获取 params 的 id 参数
   let id = req.params.id
   // 删除
-  AccountModal.deleteOne({ _id: id }).then((data, err) => {
-    if (err) {
-      console.log('删除失败', err)
-    }
-    res.render('success', { msg: '删除成功', url: '/account' })
+  AccountModal.deleteOne({ _id: id })
+  .then((data) => {
+    // 成功提醒
+    res.json({
+      // 响应编号
+      code: '0000',
+      // 响应信息
+      msg: '删除成功',
+      // 响应数据
+      data: {}
+    })
+  })
+  .catch((err) => {
+    // 失败提醒
+    res.json({
+      // 响应编号
+      code: '1003',
+      // 响应信息
+      msg: '删除失败~~~',
+      // 响应数据
+      data: null
+    })
   })
 })
 
