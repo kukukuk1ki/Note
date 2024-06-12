@@ -92,4 +92,34 @@ router.delete('/account/:id', function (req, res, next) {
   })
 })
 
+// 获取单个账单
+router.get('/account/:id', function (req, res, next) {
+  // 获取 params 的 id 参数
+  let id = req.params.id
+  // 删除
+  AccountModal.findById(id)
+  .then((data) => {
+    // 成功提醒
+    res.json({
+      // 响应编号
+      code: '0000',
+      // 响应信息
+      msg: '获取成功',
+      // 响应数据
+      data: data
+    })
+  })
+  .catch((err) => {
+    // 失败提醒
+    res.json({
+      // 响应编号
+      code: '1004',
+      // 响应信息
+      msg: '获取失败~~~',
+      // 响应数据
+      data: null
+    })
+  })
+})
+
 module.exports = router
