@@ -6,7 +6,7 @@ const app = express()
 app.get('/set-cookie', (req, res) => {
   // res.cookie('name','zhangsan') // 浏览器关闭后，cookie失效
   res.cookie('name', 'lisi', {maxAge: 20 * 1000})
-  res.cookie('theme', 'green')
+  res.cookie('theme', 'blue')
   res.send('Hello World!')
 })
 
