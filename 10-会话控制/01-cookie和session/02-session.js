@@ -18,14 +18,28 @@ app.use(
     }),
     cookie: {
       httpOnly: true, // 开启后前端无法通过 JS 操作
-      maxAge: 300 * 1000, // 这一条 是控制 sessionID 的过期时间的！！！
+      maxAge: 50 * 1000, // 这一条 是控制 sessionID 的过期时间的！！！
     },
   })
 )
 
 // 首页路由
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Home')
+})
+
+// 登录路由
+app.get('/login', (req, res) => {
+  // username=admin&password=admin
+  if (req.query.username === 'admin' && req.query.password === 'admin') {
+    // 登录成功后，设置session
+    req.session.username = 'admin'
+    req.session.uid = '259accefz'
+    // 成功响应
+    res.send('登录成功')
+  } else {
+    res.send('登录失败~~~')
+  }
 })
 
 // 启动服务
