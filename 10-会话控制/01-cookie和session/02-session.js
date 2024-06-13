@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
   res.send('Home')
 })
 
-// 登录路由
+// 登录-session的设置
 app.get('/login', (req, res) => {
   // username=admin&password=admin
   if (req.query.username === 'admin' && req.query.password === 'admin') {
@@ -40,6 +40,26 @@ app.get('/login', (req, res) => {
   } else {
     res.send('登录失败~~~')
   }
+})
+
+// session的读取
+app.get('/cart', (req, res) => {
+  if (req.session.username) {
+    res.send(`购物车页面，欢迎 ${req.session.username}`)
+  } else {
+    res.send('您还没有登录~~~')
+  }
+})
+
+// session的销毁
+app.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send('退出登录成功')
+    }
+  })  
 })
 
 // 启动服务
